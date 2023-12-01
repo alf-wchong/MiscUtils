@@ -1,0 +1,1 @@
+eksctl create iamserviceaccount --name <kubeServiceAccount> --namespace <kubeNameSpace> --cluster <eksClusterName> --role-name <iamRole> --attach-policy-arn <arnOfPolicyThatProvidesPermissions> --approve
