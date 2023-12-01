@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,7 +19,7 @@ spec:
       - envFrom:
         - configMapRef:
             name: duckdns-pinger-configmap
-        image: 817632472177.dkr.ecr.us-east-2.amazonaws.com/duckpinger:latest
+        image: xxxxxxxxxxxxxxx.dkr.ecr.us-east-2.amazonaws.com/duckpinger:latest
         imagePullPolicy: IfNotPresent
         name: duckdns-pinger
         resources: {}
@@ -30,3 +31,11 @@ spec:
       restartPolicy: Always
       schedulerName: default-scheduler
       serviceAccountName: alf-sa
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: duckdns-pinger-configmap
+data:
+  SUBDOMAIN: xxxxx
+  TOKEN: XXXXXXXXXXXXXXXXXXXXXXX
