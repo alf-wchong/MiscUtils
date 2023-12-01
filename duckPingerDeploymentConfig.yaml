@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  labels:
+    app: duckdns-pinger
+  name: duckdns-pinger
+  namespace: alfresco
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: duckdns-pinger
+  template:
+	app: duckdns-pinger
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: duckdns-pinger-configmap
+        image: 817632472177.dkr.ecr.us-east-2.amazonaws.com/duckpinger:latest
+        imagePullPolicy: IfNotPresent
+        name: duckdns-pinger
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: ecr-secrets
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      serviceAccountName: alf-sa
