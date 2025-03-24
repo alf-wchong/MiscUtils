@@ -42,13 +42,31 @@ While running multiple Tomcat instances from a single installation can be benefi
 * **Potential for Accidental Shared File Modification:**
     * Care must be taken to ensure that modifications to shared files do not unintentionally affect other instances.
 
+
 ### Best Practices
 
 To effectively run multiple Tomcat instances from a single installation:
 
 * **Separate Configuration Directories:**
     * Use separate configuration directories for each instance to avoid conflicts.
-    * Leverage the `CATALINA_BASE` environment variable to specify the configuration directory for each instance.
+    * Leverage the `INSTANCE_PATH` environment variable to specify the configuration directory for each instance.
+
+#### Configuration Files to Duplicate for each instance
+
+When running multiple instances from a single Tomcat installation, you'll need to create separate configuration directories for each instance. This typically involves duplicating the following files and directories: 
+
+* **`conf/server.xml`:** The main Tomcat server configuration file.
+* **`conf/web.xml`:** The global web application configuration file.
+* **`conf/context.xml`:** The default context configuration file.
+* **`conf/catalina.properties`:** Tomcat's properties configuration.
+* **`conf/logging.properties`:** Tomcat's logging configuration.
+* **`conf/catalina.policy`:** Security policy file.
+* **`logs/`:** The log directory (if you want separate logs per instance).
+* **`temp/`:** The temporary directory (if you want separate temp directories).
+* **`work/`:** The work directory (if you want separate work directories).
+* **`webapps/`:** The web applications directory (If you want separate web applications per instance)
+
+These files and directories should be copied into a separate directory for each Tomcat instance, and the `INSTANCE_PATH` environment variable in the [AdditionaInstance batch file](AdditionalInstance.bat) should be set to point to the respective directory for each instance.
 
 * **Unique Ports:**
     * Assign unique ports to each instance to prevent conflicts.
