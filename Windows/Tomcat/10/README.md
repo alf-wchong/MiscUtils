@@ -1,4 +1,5 @@
 # [AdditionalInstance.bat](AdditionalInstance.bat)
+In the file, \<values in angle brackets\> are to be replaced, [values in square brackets] are example values.
 
 ## Reusing a Single Apache Tomcat Installation for Multiple Instances
 
