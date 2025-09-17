@@ -140,6 +140,14 @@ pdf-splitter/
             "minimum": 0,
             "maximum": 100,
             "description": "Confidence level as a percentage (0-100)"
+          },
+          "incomplete": {
+            "type": "boolean",
+            "description": "Whether the document is incomplete"
+          },
+          "template": {
+            "type": "boolean",
+            "description": "Whether the document is a template"
           }
         },
         "required": ["category", "start_page", "end_page", "confidence"]
