@@ -1,0 +1,28 @@
+{
+  "documents": [
+    {
+      "category": "Income Statement",
+      "start_page": 2,
+      "end_page": 6,
+      "confidence": 100
+    },
+    {
+      "category": "Financial Statement",
+      "start_page": 7,
+      "end_page": 9,
+      "confidence": 100
+    },
+    {
+      "category": "Rent Roll",
+      "start_page": 10,
+      "end_page": 12,
+      "confidence": 100
+    },
+    {
+      "category": "Leasing Analysis",
+      "start_page": 13,
+      "end_page": 13,
+      "confidence": 95
+    }
+  ]
+}
