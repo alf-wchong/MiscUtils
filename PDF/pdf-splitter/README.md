@@ -106,6 +106,50 @@ pdf-splitter/
 └── README.md
 ```
 
+
+## Notes
+
+### JSON schema for PDF structure
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "The classification category of the document"
+          },
+          "start_page": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "The starting page number of the document section"
+          },
+          "end_page": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "The ending page number of the document section"
+          },
+          "confidence": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Confidence level as a percentage (0-100)"
+          }
+        },
+        "required": ["category", "start_page", "end_page", "confidence"]
+      }
+    }
+  },
+  "required": ["documents"]
+}
+```
+
 ## License
 
 MIT License
