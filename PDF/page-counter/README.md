@@ -90,6 +90,7 @@ The application outputs the difference between PDF page count and JSON page sum:
 
 | Code | Description |
 |------|-------------|
+|  0   | No error encountered |
 | -1   | Invalid command line arguments |
 | -2   | Overlapping page ranges detected in JSON |
 | -3   | PDF file not found |
@@ -100,6 +101,16 @@ The application outputs the difference between PDF page count and JSON page sum:
 | -8   | Invalid page range (start_page > end_page or start_page < 1) |
 | -9   | Error writing output file |
 | -99  | Unexpected error |
+
+<u>**Important Note:**</u> 
+
+These are system exit codes that are returned to the operating system when the application encounters an error. These codes do not appear in the console output or result files - they are used by scripts, batch files, or other programs to determine if the application completed successfully or failed. 
+
+Always check the numeric error code, either programmatically or on the console (e.g., using `echo $?` on Linux/Mac or `echo %ERRORLEVEL%` on Windows) after running the application.
+
+A successful run returns exit code `0`. Any non-zero exit code indicates an error occurred.
+
+
 
 ## Page Range Validation
 
