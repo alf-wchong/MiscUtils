@@ -45,7 +45,7 @@ java -jar target/counter-1.0.0.jar document.pdf definitions.json -o f
 
 ## JSON Schema
 
-The JSON file must follow this schema:
+The JSON file must follow this [schema](https://github.com/alf-wchong/MiscUtils/tree/main/PDF/pdf-splitter#json-schema-for-pdf-structure):
 
 ```json
 {
