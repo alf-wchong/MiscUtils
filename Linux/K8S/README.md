@@ -1,13 +1,12 @@
 # Kubernetes Pod Deletion Script
 
-This repository contains a Bash script to **search for and delete Kubernetes pods** matching a given name pattern within a specified namespace. It also supports optional validation prompts before deletion.
+Bash script to **search for and delete Kubernetes pods** matching a given name pattern within a specified namespace. It also supports optional validation prompts before deletion.
 
 ---
 
 ## Features
 
 - Delete one or more pods based on partial name matches.  
-- Automatically joins multiple provided arguments into a **hyphen-separated pod name pattern**.  
 - Supports **namespace selection**.  
 - Optional **confirmation prompt** before deletion.  
 - Provides a summary of successful and failed deletions.  
