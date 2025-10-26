@@ -1,0 +1,101 @@
+version: "3.8"
+
+services:
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - dB-Search-Network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: "True"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    ports:
+      - "8888:80"
+    networks:
+      - dB-Search-Network
+    depends_on:
+      - postgres
+
+  opensearch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: opensearch-analysisbakedin:latest
+    container_name: opensearch
+    restart: unless-stopped
+    environment:
+      discovery.type: single-node
+      OPENSEARCH_JAVA_OPTS: "-Xms512m -Xmx512m"
+      OPENSEARCH_INITIAL_ADMIN_PASSWORD: ${OPENSEARCH_PASSWORD}
+      bootstrap.memory_lock: "true"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - opensearch_data:/usr/share/opensearch/data
+    ports:
+      - "9200:9200"
+      - "9600:9600"
+    networks:
+      - dB-Search-Network
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GF_SECURITY_ADMIN_USER}
+      GF_SECURITY_ADMIN_PASSWORD: ${GF_SECURITY_ADMIN_PASSWORD}
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./provisioning:/etc/grafana/provisioning
+    ports:
+      - "3000:3000"
+    networks:
+      - dB-Search-Network
+    depends_on:
+      - opensearch
+    # See note below regarding provisioning
+
+  cerebro:
+    image: lmenezes/cerebro:latest
+    container_name: cerebro
+    restart: unless-stopped
+    environment:
+      SECRET: ${CEREBRO_SECRET}
+    ports:
+      - "9000:9000"
+    networks:
+      - dB-Search-Network
+    # Auto-connect via configuration can be added if desired
+    depends_on:
+      - opensearch
+
+networks:
+  dB-Search-Network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+  opensearch_data:
+  grafana_data:
