@@ -1,0 +1,10 @@
+FROM opensearchproject/opensearch:latest
+
+# Install analysis-icu and analysis-smartcn plugins
+RUN /usr/share/opensearch/bin/opensearch-plugin install --batch analysis-icu \
+    && /usr/share/opensearch/bin/opensearch-plugin install --batch analysis-smartcn
+
+# Optionally, set default environment variables if needed
+ENV discovery.type=single-node
+
+# Use default entrypoint/cmd from upstream image
