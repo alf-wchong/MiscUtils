@@ -81,7 +81,8 @@ chmod +x start_stack.sh
 
 Run the script (builds image, creates volumes, and starts all services):
 ```bash
-docker build -t opensearch-analysisbakedin:latest . docker compose up -d
+docker build -t opensearch-analysisbakedin:latest .
+docker compose up -d
 ```
 
 ---
