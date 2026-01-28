@@ -281,4 +281,4 @@ Expected: all files still exist with the correct contents, proving persistence t
 
 ---
 
-If you want, I can consolidate this further into a single “bootstrap script” (controller-side) that builds the image, creates volumes, runs the container, and sets up SSH/Ansible in one go.
+For the __Operational HowTos__, read [this document](UsingTheContainer.md).
