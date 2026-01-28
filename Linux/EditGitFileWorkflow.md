@@ -42,7 +42,7 @@ git pull origin main  # Ensure latest
 ## 3. Create Local Branch from Main
 
 ```
-git checkout -c <branch-name>  # Or: git switch -c <branch-name>
+git checkout -b <branch-name>  # Or: git switch -c <branch-name>
 git branch  # Verify: * <branch-name>
 ```
 
