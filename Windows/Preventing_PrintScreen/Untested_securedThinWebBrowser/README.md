@@ -1,8 +1,8 @@
-# Doxis webCube Wrapper (Win32 + WebView2)
+# Screen capture/sharing disabled viewer for Doxis managed documents (Win32 + WebView2)
 
 This prototype is a **single-file native Windows desktop wrapper** around a modern web app.
 
-It intentionally does **not** use `CHtmlView` / the legacy IE engine. Instead, it uses **Win32 + Microsoft Edge WebView2**, because the target web app is modern and needs a current browser engine.
+It uses **Win32 + Microsoft Edge WebView2**, because the target web app ([HTML5 viewer](https://services.sergroup.com/documentation/#/view/PD_webCube/14.3.0/en-us/UG_Doxis_webCube/WEBHELP/APP_webCube/topics/top_DocumentDisplay_HTML5Viewer_Intro.html) component of [Doxis webCube](https://services.sergroup.com/documentation/#/view/PD_webCube/14.3.0/en-us/UG_Doxis_webCube/WEBHELP/APP_webCube/topics/top_ChapIntro_IntroductionWebCube.html)) is modern and needs a current browser engine.
 
 ## What it does
 
