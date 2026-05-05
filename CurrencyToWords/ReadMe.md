@@ -8,9 +8,9 @@ Download `CurrencyToWords.java` and add it to your project. That's it!
 
 ```bash
 # Download the file
-curl -O https://raw.githubusercontent.com/alf-wchong/MiscUtils/new/main/CurrencyToWords/CurrencyToWords.java
+curl -O https://raw.githubusercontent.com/alf-wchong/MiscUtils/refs/heads/main/CurrencyToWords/currencyToWords.java
 
-# Or just copy it to your project
+# Copy it to your project
 cp CurrencyToWords.java /path/to/your/project/
 ```
 
