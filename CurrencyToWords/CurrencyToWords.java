@@ -434,15 +434,43 @@ public class CurrencyToWords {
     }
     
     /**
+     * Capitalizes the first letter of each word and lowercases all other letters.
+     * 
+     * @param input the string to capitalize
+     * @return the capitalized string
+     */
+    static protected String capitalizeWords(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+        
+        String[] words = input.split("\\s+");
+        StringBuilder result = new StringBuilder();
+        
+        for (String word : words) {
+            if (word.length() > 0) {
+                result.append(Character.toUpperCase(word.charAt(0)))
+                      .append(word.substring(1).toLowerCase())
+                      .append(" ");
+            }
+        }
+        
+        return result.toString().trim();
+    }    
+    
+    
+    
+    /**
      * Main method demonstrating usage of the CurrencyToWords converter.
      * 
      * @param args command line arguments (not used)
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         CurrencyToWords converter = new CurrencyToWords();
-        
+        if (args.length<1)
         // Test cases demonstrating various currencies and formats
-        String[] testCases = {
+        {String[] testCases = {
             "$1,234.56",           // US format
             "€1.234,56",           // European format
             "£999.99",             // British pounds
@@ -454,14 +482,16 @@ public class CurrencyToWords {
             "-$50.00",             // Negative (error case)
             "$1,234,567,890.12"    // Large amount
         };
-        
+        args = testCases;
         System.out.println("Currency to Words Converter - Test Results\n");
         System.out.println("=".repeat(80));
+
+        }
         
-        for (String testCase : testCases) {
-            CurrencyResult result = converter.convert(testCase);
-            System.out.println("\nInput:       " + testCase);
-            System.out.println("Output:      " + result.getWordsOutput());
+        for (String amt : args) {
+            CurrencyResult result = converter.convert(amt);
+            System.out.println("\nInput:       " + amt);
+            System.out.println("Output:      " + capitalizeWords(result.getWordsOutput()));
             System.out.println("Return Code: " + result.getReturnCode());
             if (!result.isSuccess()) {
                 System.out.println("Error:       " + result.getErrorMessage());
