@@ -10,9 +10,7 @@ This is the recommended approach for standalone systems and environments where s
 >
 > If your environment provisions individual user entries under `/etc/sudoers.d` (for example, through Active Directory, cloud-init, Ansible, Puppet, or other configuration management), refer instead to:
 >
-> ```
 > [passwordless-sudo-named-user.md](./passwordless-sudo-named-user.md)
-> ```
 
 ---
 
@@ -32,16 +30,14 @@ If the command returns a matching entry, for example:
 
 ```text
 /etc/sudoers.d/domain-admins:
-sl5623 ALL=(ALL) ALL
+kal-el ALL=(ALL) ALL
 ```
 
 then **stop**.
 
 A user-specific rule exists and will typically override the `wheel` configuration. Use the guide:
 
-```
-[passwordless-sudo-named-user.md](./passwordless-sudo-named-user.md)
-```
+[`passwordless-sudo-named-user.md`](./passwordless-sudo-named-user.md)
 
 If no matching entry is found, continue with this guide.
 
@@ -64,7 +60,7 @@ groups <username>
 Example:
 
 ```text
-uid=1001(sl5623) gid=1001(sl5623) groups=1001(kal-el),10(wheel)
+uid=1001(kal-el) gid=1001(kal-el) groups=1001(kal-el),10(wheel)
 ```
 
 If the user is not already a member of `wheel`, add them:
@@ -188,9 +184,7 @@ If a matching entry is found, it may override the `wheel` configuration.
 
 Use:
 
-```
-passwordless-sudo-user-specific.md
-```
+[`passwordless-sudo-named-user.md`](./passwordless-sudo-named-user.md)
 
 ---
 
