@@ -33,9 +33,7 @@ If the user already has an entry in `/etc/sudoers.d`, continue with this guide.
 
 If no user-specific entry exists, your system is likely using the standard `wheel` configuration instead. Refer to:
 
-```
 [`passwordless-sudo-wheel.md`](./passwordless-sudo-wheel.md)
-```
 
 ---
 
