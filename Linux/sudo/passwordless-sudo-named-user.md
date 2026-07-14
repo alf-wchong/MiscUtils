@@ -58,7 +58,7 @@ kal-el ALL=(ALL) ALL
 
 # Edit the Rule
 
-Always use `visudo`.
+Always use `visudo`. Do not use any other editors to update the following file.
 
 ```bash
 sudo visudo -f /etc/sudoers.d/domain-admins
